@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 const expressJWT = require('express-jwt')
 const config = require('./config')
 
-app.use(expressJWT({ secret: config.jwtSecretKey }).unless({ path: [/^\/api/] }))
+app.use(expressJWT({ secret: config.jwtSecretKey }).unless({ path: [/^\/api\/|^\/assets\//] }))
 
 // 导入并使用用户路由模块
 const userRouter = require('./router/user')
@@ -45,6 +45,21 @@ app.use('/my/article', artCateRouter)
 // 导入并使用文章的路由模块
 const articleRouter = require('./router/article')
 app.use('/my/article', articleRouter)
+// 导入并使用权限的路由模块
+const rolesRouter = require('./router/roles')
+app.use('/roles',rolesRouter)
+// 导入并使用商店的路由模块
+const storeRouter = require('./router/store')
+app.use('/store',storeRouter)
+// 导入并使用订单的路由模块
+const orderRouter = require('./router/order')
+app.use('/order',orderRouter)
+// 导入并使用玩家的路由模块
+const playerRouter = require('./router/player')
+app.use('/player',playerRouter)
+
+// 注册图片的静态资源
+app.use('/assets',express.static(__dirname+'\\assets'))
 
 // 定义错误级别的中间件
 app.use((err, req, res, next) => {

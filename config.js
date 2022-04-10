@@ -5,4 +5,5 @@ module.exports = {
   jwtSecretKey: 'itheima No1. ^_^',
   // token 的有效期
   expiresIn: '100h',
+  admPIcPath:`${__dirname}\\assets\\img`
 }

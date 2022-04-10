@@ -13,5 +13,7 @@ const { reg_login_schema } = require('../schema/user')
 router.post('/reguser',  user_handler.regUser)
 // 登录
 router.post('/login',  user_handler.login)
+// 玩家登陆
+router.post('/playlogin',user_handler.playLogin)
 
 module.exports = router
