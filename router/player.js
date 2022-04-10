@@ -16,7 +16,7 @@ router.post('/updataplayer/:id',player_handler.updataPlayer)
 router.get('/getgamedata/:id',player_handler.getGameData)
 // 修改用户的游戏栏
 router.post('/setusergame',player_handler.setUserGame)
-
-
+// 添加订单数据
+router.post('/addorderlist',player_handler.addOrderList)
 
 module.exports = router

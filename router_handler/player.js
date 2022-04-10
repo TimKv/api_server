@@ -128,3 +128,17 @@ exports.setUserGame = (req,res)=>{
         res.cc('更新用户信息成功！', 0)
     })
 }
+
+exports.addOrderList = (req,res)=>{
+  const sql = `insert into orderlist set ?`
+  db.query(sql, req.body, (err, results) => {
+
+    if (err) return res.cc(err)
+    // 判断影响行数是否为 1
+    // if (results.affectedRows !== 1) return res.send({ status: 1, message: '注册用户失败，请稍后再试！' })
+    if (results.affectedRows !== 1) return res.cc('添加失败，请稍后再试！')
+    // 注册用户成功
+    // res.send({ status: 0, message: '注册成功！' })
+    res.cc('添加成功！', 0)
+})
+}
